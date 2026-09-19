@@ -8,6 +8,9 @@ import Favoritos from './componentes/Favoritos';
 import Estante from './componentes/Estante';
 import Perfil from './componentes/Perfil';
 import Sacola from './componentes/Sacola';
+import Cadastro from './componentes/Cadastro';
+import Titulo from './componentes/Titulo';
+import Subtitulo from './componentes/Subtitulo';
 import { CHAVE_FAVORITOS, lerFavoritos } from './componentes/BotaoFavorito';
 import { catalogoLivros } from './componentes/Pesquisar/dadosPesquisa';
 
@@ -45,6 +48,16 @@ function App() {
         <Route path='/favoritos' element={<Favoritos favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
         <Route path='/minha-estante' element={<Estante favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
         <Route path='/perfil' element={<Perfil />} />
+        <Route
+          path='/cadastro'
+          element={(
+            <main className='pagina pagina-cadastro'>
+              <Titulo>Cadastro</Titulo>
+              <Subtitulo>Crie sua conta para continuar.</Subtitulo>
+              <Cadastro />
+            </main>
+          )}
+        />
         <Route path='/sacola' element={<Sacola />} />
       </Routes>
     </div>

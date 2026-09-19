@@ -27,3 +27,43 @@
 .icone a:hover .icone-img {
     background-color: var(--accent-bg);
 }
+
+.menu-perfil {
+    position: relative;
+}
+
+.icone-botao {
+    display: block;
+    cursor: pointer;
+    list-style: none;
+}
+
+.icone-botao::-webkit-details-marker {
+    display: none;
+}
+
+.dropdown-perfil {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: grid;
+    min-width: 140px;
+    padding: 6px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.dropdown-perfil a {
+    padding: 9px 12px;
+    color: var(--text-h);
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.dropdown-perfil a:hover {
+    color: var(--accent);
+    background-color: var(--accent-bg);
+}
