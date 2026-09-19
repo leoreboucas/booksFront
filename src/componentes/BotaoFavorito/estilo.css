@@ -1,0 +1,15 @@
+.botao-favorito {
+  padding: 8px 12px;
+  color: #fff;
+  background-color: var(--text-h);
+  border: 1px solid var(--text-h);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.botao-favorito.favoritado {
+  color: var(--text-h);
+  background-color: var(--surface);
+}

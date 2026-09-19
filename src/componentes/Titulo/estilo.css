@@ -1,0 +1,9 @@
+.titulo {
+  width: min(100%, 1050px);
+  margin: 0 auto 12px;
+  color: var(--titulo-cor, #fff);
+  font-size: var(--titulo-tamanho, 36px);
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+}

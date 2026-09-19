@@ -1,0 +1,44 @@
+.opcoes {
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.opcao{
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 0;
+    cursor: pointer;
+    min-width: 0;
+}   
+
+.opcao a {
+    padding: 10px 12px;
+    text-decoration: none;
+    color: var(--text-h);
+    border-radius: 6px;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.opcao a:hover {
+    color: var(--accent);
+    background-color: var(--accent-bg);
+}
+
+@media (max-width: 760px) {
+    .opcoes {
+        gap: 0;
+    }
+
+    .opcao a {
+        padding: 8px 6px;
+        font-size: 11px;
+    }
+}

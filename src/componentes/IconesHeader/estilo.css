@@ -1,0 +1,29 @@
+.icones {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 4px;
+}
+
+.icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.icone-img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color var(--transition-fast);
+}
+
+.icone a:hover .icone-img {
+    background-color: var(--accent-bg);
+}

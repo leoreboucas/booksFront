@@ -1,0 +1,9 @@
+.container-pesquisar {
+  background: var(--page-gradient);
+  color: var(--surface);
+  text-align: center;
+  padding: clamp(72px, 10vw, 105px) 24px;
+  min-height: 340px;
+  width: 100%;
+  box-sizing: border-box;
+}

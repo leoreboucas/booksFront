@@ -1,0 +1,25 @@
+.resultado-livro {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.resultado-livro p {
+	width: 200px;
+}
+
+.resultado-livro img {
+	width: 50px;
+}
+
+.resultado-livro:hover {
+	border: 1px solid white;
+}
+
+.pesquisa-sem-resultados {
+	margin-top: 24px;
+	color: #dceaf1;
+}

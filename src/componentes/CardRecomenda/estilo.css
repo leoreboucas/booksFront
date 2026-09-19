@@ -1,0 +1,75 @@
+.card-recomenda {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 32px;
+	max-width: 860px;
+	margin: 40px auto;
+	padding: 32px 40px;
+	color: #fff;
+	background: var(--page-gradient);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-card);
+}
+
+.card-recomenda-conteudo {
+	text-align: left;
+}
+
+.card-recomenda-conteudo span {
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.card-recomenda h2 {
+	margin: 10px 0;
+	color: #fff;
+	font-size: 28px;
+}
+
+.card-recomenda p {
+	max-width: 480px;
+	margin: 0 0 22px;
+	line-height: 1.5;
+}
+
+.card-recomenda button {
+	padding: 10px 18px;
+	color: #002f52;
+	font-weight: 700;
+	background-color: #fff;
+	border: 0;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.card-recomenda button:hover,
+.card-recomenda button:focus-visible {
+	background-color: #e8f1f5;
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+.card-recomenda img {
+	width: 130px;
+	height: 190px;
+	object-fit: contain;
+}
+
+@media (max-width: 600px) {
+	.card-recomenda {
+		margin: 28px 16px;
+		padding: 24px;
+	}
+
+	.card-recomenda h2 {
+		font-size: 22px;
+	}
+
+	.card-recomenda img {
+		width: 85px;
+		height: 130px;
+	}
+}

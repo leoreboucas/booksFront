@@ -1,0 +1,189 @@
+.sacola {
+  min-height: calc(100vh - 72px);
+  padding: 48px 32px 64px;
+  background: var(--page-gradient);
+}
+
+.sacola-subtitulo {
+  margin: -12px 0 32px;
+  color: #52616b;
+  text-align: center;
+}
+
+.sacola-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.sacola-itens,
+.resumo-sacola,
+.adicionar-livros {
+  padding: 24px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.item-sacola {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.item-sacola:first-child {
+  padding-top: 0;
+}
+
+.item-sacola:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.item-sacola img {
+  width: 72px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.item-sacola-detalhes h2,
+.resumo-sacola h2,
+.adicionar-livros h2,
+.sacola-vazia h2 {
+  margin: 0 0 8px;
+  color: #002f52;
+  font-size: 19px;
+}
+
+.item-sacola-detalhes > span {
+  color: #326589;
+  font-weight: 700;
+}
+
+.item-sacola-detalhes label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.item-sacola-detalhes input {
+  width: 52px;
+  padding: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+}
+
+.remover-item,
+.opcoes-livros button {
+  color: #002f52;
+  background: transparent;
+  border: 1px solid #002f52;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remover-item {
+  padding: 8px 10px;
+}
+
+.remover-item:hover,
+.opcoes-livros button:hover {
+  color: #fff;
+  background-color: #002f52;
+}
+
+.resumo-sacola > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  color: #52616b;
+  border-bottom: 1px solid var(--border);
+}
+
+.resumo-sacola .resumo-total {
+  color: #002f52;
+  font-size: 19px;
+  font-weight: 700;
+  border-bottom: 0;
+}
+
+.finalizar-compra {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  color: #fff;
+  background-color: #002f52;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.finalizar-compra:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.sacola-vazia {
+  text-align: center;
+}
+
+.sacola-vazia p {
+  margin-bottom: 20px;
+  color: #52616b;
+}
+
+.sacola-vazia a {
+  color: #002f52;
+  font-weight: 700;
+}
+
+.adicionar-livros {
+  max-width: 1050px;
+  margin: 24px auto 0;
+}
+
+.opcoes-livros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.opcoes-livros button {
+  padding: 8px 12px;
+}
+
+@media (max-width: 760px) {
+  .sacola {
+    padding: 32px 16px 48px;
+  }
+
+  .sacola-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .item-sacola {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .item-sacola img {
+    width: 56px;
+    height: 80px;
+  }
+
+  .remover-item {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
