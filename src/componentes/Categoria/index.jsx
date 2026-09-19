@@ -8,7 +8,7 @@ function embaralharLivros(livros) {
     return [...livros].sort(() => Math.random() - 0.5);
 }
 
-function Categoria({ categorias, livros, favoritos, alternarFavorito, titulo = 'Explore por categoria', subtitulo = 'Encontre livros organizados por assunto.' }) {
+function Categoria({ categorias, livros, favoritos, alternarFavorito, itensSacola, onAdicionarSacola, titulo = 'Explore por categoria', subtitulo = 'Encontre livros organizados por assunto.' }) {
     const [livrosEmbaralhados] = useState(() => embaralharLivros(livros));
 
     return (
@@ -27,7 +27,7 @@ function Categoria({ categorias, livros, favoritos, alternarFavorito, titulo = '
                                 <h2>{categoria.nome}</h2>
                                 <span>{livrosDaCategoria.length} livros</span>
                             </div>
-                            <ListaLivros livros={livrosDaCategoria} modo='categoria' favoritos={favoritos} onAlternarFavorito={alternarFavorito} />
+                            <ListaLivros livros={livrosDaCategoria} modo='categoria' favoritos={favoritos} itensSacola={itensSacola} onAlternarFavorito={alternarFavorito} onAdicionarSacola={onAdicionarSacola} />
                         </section>
                     );
                 })}

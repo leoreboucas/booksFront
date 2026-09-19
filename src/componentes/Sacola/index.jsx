@@ -1,44 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { catalogoLivros } from '../Pesquisar/dadosPesquisa';
 import Titulo from '../Titulo';
 import Subtitulo from '../Subtitulo';
 import './estilo.css';
 
-function Sacola({ onFinalizarCompra }) {
-  const [itensSacola, setItensSacola] = useState(() => (
-    catalogoLivros.slice(0, 2).map((livro) => ({ ...livro, quantidade: 1 }))
-  ));
-
-  function atualizarQuantidade(id, quantidade) {
-    setItensSacola((itensAtuais) => itensAtuais.map((item) => (
-      item.id === id ? { ...item, quantidade: Math.max(1, quantidade) } : item
-    )));
-  }
-
-  function removerItem(id) {
-    setItensSacola((itensAtuais) => itensAtuais.filter((item) => item.id !== id));
-  }
-
-  function adicionarItem(livro) {
-    setItensSacola((itensAtuais) => {
-      const itemExistente = itensAtuais.find((item) => item.id === livro.id);
-
-      if (itemExistente) {
-        return itensAtuais.map((item) => (
-          item.id === livro.id
-            ? { ...item, quantidade: item.quantidade + 1 }
-            : item
-        ));
-      }
-
-      return [...itensAtuais, { ...livro, quantidade: 1 }];
-    });
-  }
+function Sacola({ itensSacola, onAdicionarSacola, onAtualizarQuantidade, onRemoverDaSacola, onFinalizarCompra }) {
 
   function finalizarCompra() {
     onFinalizarCompra(itensSacola);
-    setItensSacola([]);
   }
 
   function converterPreco(preco) {
@@ -83,11 +52,11 @@ function Sacola({ onFinalizarCompra }) {
                       type='number'
                       min='1'
                       value={item.quantidade}
-                      onChange={(evento) => atualizarQuantidade(item.id, Number(evento.target.value))}
+                      onChange={(evento) => onAtualizarQuantidade(item.id, Number(evento.target.value))}
                     />
                   </label>
                 </div>
-                <button type='button' className='remover-item' onClick={() => removerItem(item.id)}>
+                <button type='button' className='remover-item' onClick={() => onRemoverDaSacola(item.id)}>
                   Remover
                 </button>
               </article>
@@ -116,7 +85,7 @@ function Sacola({ onFinalizarCompra }) {
           <h2>Adicionar mais livros</h2>
           <div className='opcoes-livros'>
             {livrosDisponiveis.slice(0, 6).map((livro) => (
-              <button type='button' key={livro.id} onClick={() => adicionarItem(livro)}>
+              <button type='button' key={livro.id} onClick={() => onAdicionarSacola(livro)}>
                 + {livro.titulo}
               </button>
             ))}

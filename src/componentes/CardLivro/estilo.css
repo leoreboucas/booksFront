@@ -11,6 +11,16 @@
   margin: 0;
 }
 
+.card-livro-acoes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-livro-acoes > button {
+  min-height: 38px;
+}
+
 .card-livro--resultado {
   justify-content: center;
   gap: 12px;
@@ -99,4 +109,80 @@
   margin-top: auto;
   color: #326589;
   font-size: 18px;
+}
+
+.quantidade-livro {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.botao-sacola {
+  width: 100%;
+  padding: 8px 12px;
+  color: var(--surface);
+  background-color: var(--text-h);
+  border: 1px solid var(--text-h);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.botao-sacola:hover,
+.botao-sacola:focus-visible {
+  color: var(--text-h);
+  background-color: var(--surface);
+  outline: none;
+}
+
+.botao-sacola.adicionado {
+  color: var(--text-h);
+  background-color: var(--surface);
+}
+
+.botao-sacola.adicionado:hover,
+.botao-sacola.adicionado:focus-visible {
+  color: var(--surface);
+  background-color: var(--accent);
+}
+
+.card-livro--atualizacao .botao-sacola,
+.card-livro--venda .botao-sacola {
+  margin-top: auto;
+}
+
+.card-livro--categoria .botao-sacola {
+  align-self: center;
+  width: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .card-livro--venda {
+    min-height: 0;
+    padding: 16px 12px;
+  }
+
+  .card-livro--venda a {
+    height: 150px;
+  }
+
+  .card-livro--venda img {
+    width: 104px;
+    height: 150px;
+  }
+
+  .card-livro--resultado {
+    flex-wrap: wrap;
+  }
+
+  .card-livro--resultado h3 {
+    width: min(100%, 180px);
+  }
+}
+
+.card-livro--resultado .botao-sacola {
+  width: auto;
+  white-space: nowrap;
 }

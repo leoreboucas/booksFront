@@ -5,7 +5,7 @@ import Pesquisar from '../Pesquisar';
 import ListaLivros from '../ListaLivros';
 import './estilo.css';
 
-function Favoritos({ favoritos, alternarFavorito }) {
+function Favoritos({ favoritos, alternarFavorito, itensSacola, onAdicionarSacola }) {
     const [livrosExibidos, setLivrosExibidos] = useState(favoritos);
     const [buscaKey, setBuscaKey] = useState(0);
 
@@ -45,7 +45,10 @@ function Favoritos({ favoritos, alternarFavorito }) {
                     <ListaLivros
                         livros={livrosExibidos}
                         favoritos={favoritos}
+                        itensSacola={itensSacola}
+                        mostrarSacola={false}
                         onAlternarFavorito={alternarFavorito}
+                        onAdicionarSacola={onAdicionarSacola}
                     />
                 )}
             </section>

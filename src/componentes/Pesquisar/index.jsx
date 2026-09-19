@@ -10,6 +10,8 @@ function Pesquisar({
   livros,
   favoritos,
   alternarFavorito,
+  itensSacola,
+  onAdicionarSacola,
   placeholder = 'Digite aqui o nome do livro',
   mensagemSemResultados = 'Nenhum livro encontrado.',
   titulo = 'Já sabe por onde começar?',
@@ -51,7 +53,7 @@ function Pesquisar({
           {termoPesquisa.trim() && livrosEncontrados.length === 0 ? (
             <p className='pesquisa-sem-resultados'>{mensagemSemResultados}</p>
           ) : (
-            <ListaLivros livros={livrosEncontrados} favoritos={favoritos} onAlternarFavorito={alternarFavorito} />
+            <ListaLivros livros={livrosEncontrados} favoritos={favoritos} itensSacola={itensSacola} onAlternarFavorito={alternarFavorito} onAdicionarSacola={onAdicionarSacola} />
           )}
         </div>
       )}

@@ -24,7 +24,10 @@ const categorias = [
 
 function App() {
   const [favoritos, setFavoritos] = useState(lerFavoritos);
-  const [livrosComprados, setLivrosComprados] = useState(() => catalogoLivros.slice(0, 3));
+  const [itensSacola, setItensSacola] = useState([]);
+  const [livrosComprados, setLivrosComprados] = useState(() => (
+    catalogoLivros.slice(0, 3).map((livro) => ({ ...livro, quantidade: 1 }))
+  ));
 
   useEffect(() => {
     localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos));
@@ -42,21 +45,54 @@ function App() {
 
   function finalizarCompra(itens) {
     setLivrosComprados((livrosAtuais) => {
-      const livrosNovos = itens.filter(
-        (item) => !livrosAtuais.some((livro) => livro.id === item.id)
-      );
+      return itens.reduce((lista, item) => {
+        const itemExistente = lista.find((livro) => livro.id === item.id);
 
-      return [...livrosAtuais, ...livrosNovos];
+        if (itemExistente) {
+          return lista.map((livro) => (
+            livro.id === item.id
+              ? { ...livro, quantidade: (livro.quantidade || 0) + item.quantidade }
+              : livro
+          ));
+        }
+
+        return [...lista, { ...item, quantidade: item.quantidade || 1 }];
+      }, livrosAtuais);
     });
+  }
+
+  function alternarSacola(livro) {
+    setItensSacola((itensAtuais) => {
+      const itemExistente = itensAtuais.find((item) => item.id === livro.id);
+
+      return itemExistente
+        ? itensAtuais.filter((item) => item.id !== livro.id)
+        : [...itensAtuais, { ...livro, quantidade: 1 }];
+    });
+  }
+
+  function atualizarQuantidadeSacola(id, quantidade) {
+    setItensSacola((itensAtuais) => itensAtuais.map((item) => (
+      item.id === id ? { ...item, quantidade: Math.max(1, quantidade) } : item
+    )));
+  }
+
+  function removerDaSacola(id) {
+    setItensSacola((itensAtuais) => itensAtuais.filter((item) => item.id !== id));
+  }
+
+  function concluirCompra() {
+    finalizarCompra(itensSacola);
+    setItensSacola([]);
   }
 
   return (
     <div className='App'>
       <Header />
       <Routes>
-        <Route path='/' element={<Home favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
-        <Route path='/categorias' element={<Categoria categorias={categorias} livros={catalogoLivros} favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
-        <Route path='/favoritos' element={<Favoritos favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
+        <Route path='/' element={<Home favoritos={favoritos} alternarFavorito={alternarFavorito} itensSacola={itensSacola} onAdicionarSacola={alternarSacola} />} />
+        <Route path='/categorias' element={<Categoria categorias={categorias} livros={catalogoLivros} favoritos={favoritos} alternarFavorito={alternarFavorito} itensSacola={itensSacola} onAdicionarSacola={alternarSacola} />} />
+        <Route path='/favoritos' element={<Favoritos favoritos={favoritos} alternarFavorito={alternarFavorito} itensSacola={itensSacola} onAdicionarSacola={alternarSacola} />} />
         <Route path='/minha-estante' element={<Estante livrosComprados={livrosComprados} />} />
         <Route path='/perfil' element={<Perfil quantidadeFavoritos={favoritos.length} />} />
         <Route
@@ -69,7 +105,7 @@ function App() {
             </main>
           )}
         />
-        <Route path='/sacola' element={<Sacola onFinalizarCompra={finalizarCompra} />} />
+        <Route path='/sacola' element={<Sacola itensSacola={itensSacola} onAdicionarSacola={alternarSacola} onAtualizarQuantidade={atualizarQuantidadeSacola} onRemoverDaSacola={removerDaSacola} onFinalizarCompra={concluirCompra} />} />
       </Routes>
     </div>
   );
