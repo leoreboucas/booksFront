@@ -12,31 +12,49 @@ function Pesquisar({
   alternarFavorito,
   placeholder = 'Digite aqui o nome do livro',
   mensagemSemResultados = 'Nenhum livro encontrado.',
+  titulo = 'Já sabe por onde começar?',
+  subtitulo = 'Encontre seu produto.',
+  mostrarResultadosIniciais = false,
+  mostrarResultados = true,
+  onResultadosChange,
 }) {
   const [termoPesquisa, setTermoPesquisa] = useState('');
 
-  const livrosEncontrados = termoPesquisa.trim()
-    ? livros.filter(({ titulo }) => (
-        titulo.toLocaleLowerCase().includes(termoPesquisa.trim().toLocaleLowerCase())
-      ))
-    : [];
+  function filtrarLivros(texto) {
+    const termo = texto.trim().toLocaleLowerCase();
+    return termo
+      ? livros.filter(({ titulo: tituloLivro }) => (
+          tituloLivro.toLocaleLowerCase().includes(termo)
+        ))
+      : mostrarResultadosIniciais ? livros : [];
+  }
+
+  const livrosEncontrados = filtrarLivros(termoPesquisa);
+
+  function atualizarPesquisa(evento) {
+    const texto = evento.target.value;
+    setTermoPesquisa(texto);
+    onResultadosChange?.(filtrarLivros(texto));
+  }
 
   return (
     <ContainerPesquisar>
-      <Titulo>Já sabe por onde começar?</Titulo>
-      <Subtitulo>Encontre seu produto.</Subtitulo>
+      <Titulo>{titulo}</Titulo>
+      <Subtitulo>{subtitulo}</Subtitulo>
       <Input
         placeholder={placeholder}
         value={termoPesquisa}
-        onChange={(evento) => setTermoPesquisa(evento.target.value)}
+        onChange={atualizarPesquisa}
       />
-      <div>
-        {termoPesquisa.trim() && livrosEncontrados.length === 0 ? (
-          <p className='pesquisa-sem-resultados'>{mensagemSemResultados}</p>
-        ) : (
-          <ListaLivros livros={livrosEncontrados} favoritos={favoritos} onAlternarFavorito={alternarFavorito} />
-        )}
-      </div>
+      {mostrarResultados && (
+        <div>
+          {termoPesquisa.trim() && livrosEncontrados.length === 0 ? (
+            <p className='pesquisa-sem-resultados'>{mensagemSemResultados}</p>
+          ) : (
+            <ListaLivros livros={livrosEncontrados} favoritos={favoritos} onAlternarFavorito={alternarFavorito} />
+          )}
+        </div>
+      )}
     </ContainerPesquisar>
   );
 }

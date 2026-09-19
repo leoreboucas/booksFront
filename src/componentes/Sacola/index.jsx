@@ -5,7 +5,7 @@ import Titulo from '../Titulo';
 import Subtitulo from '../Subtitulo';
 import './estilo.css';
 
-function Sacola() {
+function Sacola({ onFinalizarCompra }) {
   const [itensSacola, setItensSacola] = useState(() => (
     catalogoLivros.slice(0, 2).map((livro) => ({ ...livro, quantidade: 1 }))
   ));
@@ -34,6 +34,11 @@ function Sacola() {
 
       return [...itensAtuais, { ...livro, quantidade: 1 }];
     });
+  }
+
+  function finalizarCompra() {
+    onFinalizarCompra(itensSacola);
+    setItensSacola([]);
   }
 
   function converterPreco(preco) {
@@ -95,7 +100,12 @@ function Sacola() {
           <div><span>Itens</span><strong>{itensSacola.length}</strong></div>
           <div><span>Subtotal</span><strong>{formatarPreco(subtotal)}</strong></div>
           <div className='resumo-total'><span>Total</span><strong>{formatarPreco(subtotal)}</strong></div>
-          <button type='button' className='finalizar-compra' disabled={!itensSacola.length}>
+          <button
+            type='button'
+            className='finalizar-compra'
+            disabled={!itensSacola.length}
+            onClick={finalizarCompra}
+          >
             Finalizar compra
           </button>
         </aside>

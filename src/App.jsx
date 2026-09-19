@@ -24,6 +24,7 @@ const categorias = [
 
 function App() {
   const [favoritos, setFavoritos] = useState(lerFavoritos);
+  const [livrosComprados, setLivrosComprados] = useState(() => catalogoLivros.slice(0, 3));
 
   useEffect(() => {
     localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos));
@@ -39,6 +40,16 @@ function App() {
     });
   }
 
+  function finalizarCompra(itens) {
+    setLivrosComprados((livrosAtuais) => {
+      const livrosNovos = itens.filter(
+        (item) => !livrosAtuais.some((livro) => livro.id === item.id)
+      );
+
+      return [...livrosAtuais, ...livrosNovos];
+    });
+  }
+
   return (
     <div className='App'>
       <Header />
@@ -46,8 +57,8 @@ function App() {
         <Route path='/' element={<Home favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
         <Route path='/categorias' element={<Categoria categorias={categorias} livros={catalogoLivros} favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
         <Route path='/favoritos' element={<Favoritos favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
-        <Route path='/minha-estante' element={<Estante favoritos={favoritos} alternarFavorito={alternarFavorito} />} />
-        <Route path='/perfil' element={<Perfil />} />
+        <Route path='/minha-estante' element={<Estante livrosComprados={livrosComprados} />} />
+        <Route path='/perfil' element={<Perfil quantidadeFavoritos={favoritos.length} />} />
         <Route
           path='/cadastro'
           element={(
@@ -58,7 +69,7 @@ function App() {
             </main>
           )}
         />
-        <Route path='/sacola' element={<Sacola />} />
+        <Route path='/sacola' element={<Sacola onFinalizarCompra={finalizarCompra} />} />
       </Routes>
     </div>
   );

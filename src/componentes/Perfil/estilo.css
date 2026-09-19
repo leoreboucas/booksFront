@@ -2,85 +2,79 @@
   display: block;
 }
 
-.formulario-cadastro {
-  display: grid;
-  gap: 18px;
+.resumo-perfil {
   max-width: 620px;
-  margin: 0 auto;
-  padding: 32px;
+  margin: 0 auto 24px;
+  padding: 24px 32px;
+  color: var(--text-h);
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
 }
 
-.campo-formulario {
-  display: grid;
-  gap: 7px;
+.resumo-perfil-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
 }
 
-.campo-formulario label {
-  color: var(--text-h);
-  font-size: 14px;
+.avatar-perfil {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: var(--surface);
+  background: var(--page-gradient);
+  border-radius: 50%;
+  font-size: 20px;
   font-weight: 700;
 }
 
-.campo-formulario input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 14px;
+.resumo-perfil h2 {
+  margin: 0 0 4px;
   color: var(--text-h);
-  background-color: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  font: inherit;
-  font-size: 16px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  font-size: 20px;
 }
 
-.campo-formulario input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-bg);
-  outline: none;
+.resumo-perfil p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
-.campos-senha {
+.dados-perfil {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px 24px;
+  margin: 22px 0 0;
 }
 
-.botao-cadastro {
-  padding: 13px 18px;
-  color: var(--surface);
-  background-color: var(--text-h);
-  border: 1px solid var(--text-h);
-  border-radius: 6px;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+.dados-perfil div {
+  display: grid;
+  gap: 4px;
 }
 
-.botao-cadastro:hover {
-  background-color: var(--accent);
-  border-color: var(--accent);
+.dados-perfil dt {
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
-.mensagem-cadastro {
-  min-height: 24px;
+.dados-perfil dd {
   margin: 0;
-  color: var(--accent);
-  font-size: 14px;
-  text-align: center;
+  color: var(--text-h);
+  font-size: 15px;
+  font-weight: 700;
 }
 
 @media (max-width: 600px) {
-  .formulario-cadastro {
+  .resumo-perfil {
     padding: 22px 18px;
   }
 
-  .campos-senha {
+  .dados-perfil {
     grid-template-columns: 1fr;
   }
 }

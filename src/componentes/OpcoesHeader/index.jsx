@@ -1,15 +1,19 @@
 import './estilo.css';
 import { Link } from "react-router-dom"
 
-const textoOpcoes = ['CATEGORIAS','FAVORITOS','ESTANTE'];
+const opcoes = [
+  { texto: 'CATEGORIAS', caminho: '/categorias' },
+  { texto: 'FAVORITOS', caminho: '/favoritos' },
+  { texto: 'ESTANTE', caminho: '/minha-estante' },
+];
 
 function OpcoesHeader (){
     return (
 
         <ul className='opcoes'>
-          {textoOpcoes.map((texto) => (
+          {opcoes.map(({ texto, caminho }) => (
             <li key={texto} className='opcao'>
-              <Link to={`/${texto.toLowerCase().replace(/\s+/g, '-')}`}>
+              <Link to={caminho}>
               <p>{texto}</p>
              </Link>
             </li>

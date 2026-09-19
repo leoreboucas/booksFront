@@ -1,6 +1,6 @@
 import CardLivro from '../CardLivro';
 
-function ListaLivros({ livros, modo = 'resultado', mostrarPreco = false, linkCapa = false, favoritos = [], onAlternarFavorito = () => {} }) {
+function ListaLivros({ livros, modo = 'resultado', mostrarPreco = false, linkCapa = false, mostrarFavorito = true, favoritos = [], onAlternarFavorito = () => {} }) {
   return (
     <>
       {livros.map((livro) => (
@@ -10,6 +10,7 @@ function ListaLivros({ livros, modo = 'resultado', mostrarPreco = false, linkCap
           modo={modo}
           mostrarPreco={mostrarPreco}
           linkCapa={linkCapa}
+          mostrarFavorito={mostrarFavorito}
           favoritado={favoritos.some(({ id }) => id === livro.id)}
           onAlternarFavorito={onAlternarFavorito}
         />

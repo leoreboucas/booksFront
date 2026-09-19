@@ -1,4 +1,4 @@
-.pagina-favoritos > .card-livro--resultado {
+.pagina-favoritos .lista-favoritos > .card-livro--resultado {
   justify-content: flex-start;
   max-width: 700px;
   margin: 0 auto 12px;
@@ -10,6 +10,58 @@
   box-shadow: var(--shadow-card);
 }
 
-.pagina-favoritos > .card-livro--resultado:hover {
+.pagina-favoritos .lista-favoritos > .card-livro--resultado:hover {
   border-color: #326589;
+}
+
+.pagina-favoritos .lista-favoritos .card-livro--resultado h3 {
+  color: var(--text-h);
+}
+
+.pagina-favoritos .container-pesquisar {
+  min-height: auto;
+  margin: -12px auto 28px;
+  padding: 28px 24px;
+  border-radius: var(--radius-card);
+}
+
+.pagina-favoritos .container-pesquisar .titulo {
+  font-size: 28px;
+}
+
+.pagina-favoritos .container-pesquisar .subtitulo {
+  margin-bottom: 20px;
+}
+
+.botao-listar-todos {
+  display: block;
+  margin: -16px auto 24px;
+  padding: 9px 16px;
+  color: var(--text-h);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.botao-listar-todos:hover {
+  background-color: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.lista-favoritos {
+  display: grid;
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.lista-favoritos > p {
+  padding: 24px;
+  color: var(--text-on-dark);
+  text-align: center;
 }

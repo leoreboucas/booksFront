@@ -4,7 +4,7 @@ import './estilo.css';
 import Titulo from '../Titulo';
 
 function UltimasAtualizacoes({ favoritos, alternarFavorito }) {
-    const livrosAtualizados = [...catalogoLivros].reverse();
+    const livrosAtualizados = [...catalogoLivros].reverse().slice(0, 3);
 
     return (
         <section className='ultimas-atualizacoes'>

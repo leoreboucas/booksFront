@@ -2,7 +2,7 @@ import BotaoFavorito from '../BotaoFavorito';
 import capaFallback from '../../assets/livro3.png';
 import './estilo.css';
 
-function CardLivro({ livro, modo = 'resultado', mostrarPreco = false, linkCapa = false, favoritado = false, onAlternarFavorito = () => {} }) {
+function CardLivro({ livro, modo = 'resultado', mostrarPreco = false, linkCapa = false, mostrarFavorito = true, favoritado = false, onAlternarFavorito = () => {} }) {
   function usarCapaFallback(evento) {
     evento.currentTarget.onerror = null;
     evento.currentTarget.src = capaFallback;
@@ -25,7 +25,9 @@ function CardLivro({ livro, modo = 'resultado', mostrarPreco = false, linkCapa =
       ) : imagem}
       <h3>{livro.titulo}</h3>
       {mostrarPreco && <strong>{livro.preco || 'R$ 49,90'}</strong>}
-      <BotaoFavorito livro={livro} favoritado={favoritado} onAlternar={onAlternarFavorito} />
+      {mostrarFavorito && (
+        <BotaoFavorito livro={livro} favoritado={favoritado} onAlternar={onAlternarFavorito} />
+      )}
     </article>
   );
 }
