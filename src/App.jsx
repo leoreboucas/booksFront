@@ -24,14 +24,25 @@ const categorias = [
 
 function App() {
   const [favoritos, setFavoritos] = useState(lerFavoritos);
+  const [modoEscuro, setModoEscuro] = useState(() => (
+    localStorage.getItem('booksia-modo-escuro') === 'true'
+  ));
   const [itensSacola, setItensSacola] = useState([]);
   const [livrosComprados, setLivrosComprados] = useState(() => (
     catalogoLivros.slice(0, 3).map((livro) => ({ ...livro, quantidade: 1 }))
   ));
+  const quantidadeLivrosComprados = livrosComprados.reduce(
+    (total, livro) => total + (livro.quantidade || 1),
+    0
+  );
 
   useEffect(() => {
     localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos));
   }, [favoritos]);
+
+  useEffect(() => {
+    localStorage.setItem('booksia-modo-escuro', String(modoEscuro));
+  }, [modoEscuro]);
 
   function alternarFavorito(livro) {
     setFavoritos((favoritosAtuais) => {
@@ -87,14 +98,14 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <Header />
+    <div className={`App${modoEscuro ? ' tema-escuro' : ''}`}>
+      <Header modoEscuro={modoEscuro} onAlternarTema={() => setModoEscuro((temaAtual) => !temaAtual)} />
       <Routes>
         <Route path='/' element={<Home favoritos={favoritos} alternarFavorito={alternarFavorito} itensSacola={itensSacola} onAdicionarSacola={alternarSacola} />} />
         <Route path='/categorias' element={<Categoria categorias={categorias} livros={catalogoLivros} favoritos={favoritos} alternarFavorito={alternarFavorito} itensSacola={itensSacola} onAdicionarSacola={alternarSacola} />} />
         <Route path='/favoritos' element={<Favoritos favoritos={favoritos} alternarFavorito={alternarFavorito} itensSacola={itensSacola} onAdicionarSacola={alternarSacola} />} />
         <Route path='/minha-estante' element={<Estante livrosComprados={livrosComprados} />} />
-        <Route path='/perfil' element={<Perfil quantidadeFavoritos={favoritos.length} />} />
+        <Route path='/perfil' element={<Perfil quantidadeFavoritos={favoritos.length} quantidadeLivrosComprados={quantidadeLivrosComprados} />} />
         <Route
           path='/cadastro'
           element={(

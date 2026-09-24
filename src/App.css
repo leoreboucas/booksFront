@@ -5,6 +5,25 @@
   background: var(--page-gradient);
 }
 
+.tema-escuro {
+  --text: #c7d4dc;
+  --text-h: #edf5f8;
+  --bg: #101b22;
+  --border: #30424d;
+  --code-bg: #1d2d36;
+  --accent: #8cc7e8;
+  --accent-bg: rgb(140 199 232 / 14%);
+  --accent-border: rgb(140 199 232 / 55%);
+  --social-bg: rgb(29 45 54 / 75%);
+  --page-gradient: linear-gradient(135deg, #0c1820 0%, #1d4358 100%);
+  --surface: #182832;
+  --border-strong: #49606d;
+  --text-muted: #aabdc7;
+  --text-on-dark: #edf5f8;
+  --shadow-card: 0 6px 18px rgb(0 0 0 / 28%);
+  color-scheme: dark;
+}
+
 .App-header {
   position: sticky;
   top: 0;
@@ -16,10 +35,17 @@
   justify-content: space-between;
   gap: 24px;
   width: 100%;
+  min-width: 0;
   min-height: 72px;
   padding-right: 24px;
+  padding-left: 0;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
+}
+
+.tema-escuro .App-header {
+  background-color: rgb(16 27 34 / 96%);
+  border-bottom-color: var(--border);
 }
 
 .pagina {
@@ -32,7 +58,7 @@
 .pagina > h1 {
   max-width: 1050px;
   margin: 0 auto 12px;
-  color: #002f52;
+  color: var(--text-h);
   font-size: clamp(32px, 5vw, 48px);
   text-align: left;
 }
@@ -40,7 +66,7 @@
 .pagina > p {
   max-width: 1050px;
   margin: 0 auto 24px;
-  color: #52616b;
+  color: var(--text-muted);
 }
 
 button,

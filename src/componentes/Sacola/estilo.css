@@ -6,7 +6,7 @@
 
 .sacola-subtitulo {
   margin: -12px 0 32px;
-  color: #52616b;
+  color: var(--text-muted);
   text-align: center;
 }
 
@@ -57,12 +57,12 @@
 .adicionar-livros h2,
 .sacola-vazia h2 {
   margin: 0 0 8px;
-  color: #002f52;
+  color: var(--text-h);
   font-size: 19px;
 }
 
 .item-sacola-detalhes > span {
-  color: #326589;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -84,9 +84,9 @@
 
 .remover-item,
 .opcoes-livros button {
-  color: #002f52;
+  color: var(--text-h);
   background: transparent;
-  border: 1px solid #002f52;
+  border: 1px solid var(--text-h);
   border-radius: 4px;
   cursor: pointer;
 }
@@ -97,20 +97,20 @@
 
 .remover-item:hover,
 .opcoes-livros button:hover {
-  color: #fff;
-  background-color: #002f52;
+  color: var(--surface);
+  background-color: var(--text-h);
 }
 
 .resumo-sacola > div {
   display: flex;
   justify-content: space-between;
   padding: 12px 0;
-  color: #52616b;
+  color: var(--text-muted);
   border-bottom: 1px solid var(--border);
 }
 
 .resumo-sacola .resumo-total {
-  color: #002f52;
+  color: var(--text-h);
   font-size: 19px;
   font-weight: 700;
   border-bottom: 0;
@@ -121,7 +121,7 @@
   margin-top: 16px;
   padding: 12px;
   color: #fff;
-  background-color: #002f52;
+  background-color: var(--text-h);
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -139,11 +139,11 @@
 
 .sacola-vazia p {
   margin-bottom: 20px;
-  color: #52616b;
+  color: var(--text-muted);
 }
 
 .sacola-vazia a {
-  color: #002f52;
+  color: var(--text-h);
   font-weight: 700;
 }
 

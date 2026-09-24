@@ -24,6 +24,14 @@
     transition: background-color var(--transition-fast);
 }
 
+.botao-tema {
+    color: var(--text-h) !important;
+}
+
+.botao-tema:hover {
+    background-color: var(--accent-bg) !important;
+}
+
 .icone a:hover .icone-img {
     background-color: var(--accent-bg);
 }
@@ -66,4 +74,10 @@
 .dropdown-perfil a:hover {
     color: var(--accent);
     background-color: var(--accent-bg);
+}
+
+@media (max-width: 760px) {
+    .icones .icone:not(.icone-tema) {
+        display: none;
+    }
 }

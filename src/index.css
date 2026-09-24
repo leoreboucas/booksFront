@@ -41,6 +41,7 @@
 body {
   margin: 0;
   background: var(--bg);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 #root {

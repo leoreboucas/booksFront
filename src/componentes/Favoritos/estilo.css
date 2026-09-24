@@ -3,7 +3,7 @@
   max-width: 700px;
   margin: 0 auto 12px;
   padding: 12px 16px;
-  color: #002f52;
+  color: var(--text-h);
   background-color: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
@@ -11,7 +11,7 @@
 }
 
 .pagina-favoritos .lista-favoritos > .card-livro--resultado:hover {
-  border-color: #326589;
+  border-color: var(--accent);
 }
 
 .pagina-favoritos .lista-favoritos .card-livro--resultado h3 {

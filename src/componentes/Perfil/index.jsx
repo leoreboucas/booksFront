@@ -9,6 +9,7 @@ function Perfil({
         status: 'Perfil em configuração',
     },
     quantidadeFavoritos = 0,
+    quantidadeLivrosComprados = 0,
 }) {
     return (
         <main className='pagina pagina-perfil'>
@@ -40,6 +41,10 @@ function Perfil({
                     <div>
                         <dt>Favoritos</dt>
                         <dd>{quantidadeFavoritos} livros</dd>
+                    </div>
+                    <div>
+                        <dt>Na estante</dt>
+                        <dd>{quantidadeLivrosComprados} livros</dd>
                     </div>
                 </dl>
             </section>

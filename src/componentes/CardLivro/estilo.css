@@ -64,7 +64,7 @@
 }
 
 .card-livro--atualizacao h3 {
-  color: #002f52;
+  color: var(--text-h);
   font-size: 16px;
   line-height: 1.3;
   text-align: center;
@@ -99,7 +99,7 @@
 .card-livro--venda h3 {
   min-height: 48px;
   margin-top: 4px;
-  color: #002f52;
+  color: var(--text-h);
   font-size: 17px;
   line-height: 1.4;
   text-align: center;
@@ -107,7 +107,7 @@
 
 .card-livro--venda strong {
   margin-top: auto;
-  color: #326589;
+  color: var(--accent);
   font-size: 18px;
 }
 
